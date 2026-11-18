@@ -35,9 +35,6 @@ disabled = false
 format = '[(\($virtualenv\) )]($style)'
 
 [shell]
-bash_indicator = "bash"
-fish_indicator = "fish"
-nu_indicator = "nu"
 format = "[$indicator]($style)"
 disabled = false
 
