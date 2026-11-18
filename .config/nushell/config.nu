@@ -38,4 +38,5 @@ $env.config.keybindings = $env.config.keybindings | append [$ctrl_z]
 alias ls = ls -la
 alias sudo = ^sudo -E
 alias table = table -t "light"
+alias dot = ^git --git-dir ($nu.home-dir | path join ".local/share/dotfiles.git") --work-tree $nu.home-dir
 def fg [] { try { job unfreeze (job list | get id.0) } }

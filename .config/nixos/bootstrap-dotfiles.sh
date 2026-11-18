@@ -22,7 +22,7 @@ if [ "$(git --git-dir="$staging" rev-parse --is-bare-repository)" != true ]; the
 fi
 
 git --git-dir="$staging" config --local status.showUntrackedFiles no
-git --git-dir="$staging" --work-tree="$home" checkout
+git --git-dir="$staging" --work-tree="$home" checkout --force
 if [ ! -f "$home/.config/nixos/flake.nix" ]; then
   printf 'Checkout is missing %s/.config/nixos/flake.nix\n' "$home" >&2
   exit 1

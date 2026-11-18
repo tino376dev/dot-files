@@ -41,9 +41,11 @@ model-specific kernel or firmware configuration. Test on the actual device.
 
 The Surface sets `dotfiles.user = "tino"`. At boot (or during the first switch),
 `dotfiles-bootstrap.service` clones the repository as
-`~/.local/share/dotfiles.git` and checks it out into the user's home. It runs as
-that user, refuses checkout conflicts, and leaves existing bare repositories
-and local edits alone. It never pulls updates automatically. Network access
+`~/.local/share/dotfiles.git` and checks it out into the user's home. On the
+initial checkout, it can replace existing files at paths tracked by the
+repository, so back up anything you want to keep. It runs as that user and
+leaves an already-existing bare repository alone. It never pulls updates
+automatically. Network access
 to the published repo is required; private repos require Git credentials for
 that user. An unavailable repo causes a visible service failure.
 
@@ -52,7 +54,7 @@ that user. An unavailable repo causes a visible service failure.
 different symlink. Back up and move the old `/etc/nixos` aside manually, then
 run `sudo systemctl restart dotfiles-nixos-link.service`. To inspect failures,
 use `journalctl -u dotfiles-bootstrap -u dotfiles-nixos-link`; after resolving
-a checkout conflict or publishing the repository, restart
+a bootstrap failure or publishing the repository, restart
 `dotfiles-bootstrap.service`, then `dotfiles-nixos-link.service`.
 
 The hostname is `surface`, matching the flake output, so subsequent local
