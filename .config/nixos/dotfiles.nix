@@ -36,32 +36,5 @@ in
         ExecStart = "${lib.getExe bootstrap} ${lib.escapeShellArgs [ cfg.repository home ]}";
       };
     };
-
-    systemd.services.dotfiles-nixos-link = {
-      description = "Link the user's NixOS configuration at /etc/nixos";
-      requires = [ "dotfiles-bootstrap.service" ];
-      after = [ "dotfiles-bootstrap.service" ];
-      wantedBy = [ "multi-user.target" ];
-      path = [ pkgs.coreutils ];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
-        target=${lib.escapeShellArg "${home}/.config/nixos"}
-        if [ ! -f "$target/flake.nix" ]; then
-          printf 'Missing flake: %s/flake.nix\n' "$target" >&2
-          exit 1
-        fi
-        if [ -L /etc/nixos ] && [ "$(readlink /etc/nixos)" = "$target" ]; then
-          exit 0
-        fi
-        if [ -e /etc/nixos ] || [ -L /etc/nixos ]; then
-          printf '/etc/nixos already exists. Back it up and move it aside, then restart dotfiles-nixos-link.service.\n' >&2
-          exit 1
-        fi
-        ln -s -- "$target" /etc/nixos
-      '';
-    };
   };
 }

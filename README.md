@@ -49,26 +49,30 @@ automatically. Network access
 to the published repo is required; private repos require Git credentials for
 that user. An unavailable repo causes a visible service failure.
 
-`dotfiles-nixos-link.service` then links `/etc/nixos` to
-`/home/tino/.config/nixos`. It refuses to replace an existing directory or
-different symlink. Back up and move the old `/etc/nixos` aside manually, then
-run `sudo systemctl restart dotfiles-nixos-link.service`. To inspect failures,
-use `journalctl -u dotfiles-bootstrap -u dotfiles-nixos-link`; after resolving
-a bootstrap failure or publishing the repository, restart
-`dotfiles-bootstrap.service`, then `dotfiles-nixos-link.service`.
+No `/etc/nixos` symlink is needed; rebuilds use the flake in the user's home
+directly. Existing `/etc/nixos` directories, symlinks, and backups are left
+untouched. To inspect bootstrap failures, use
+`journalctl -u dotfiles-bootstrap`; after resolving a bootstrap failure or
+publishing the repository, restart `dotfiles-bootstrap.service`.
 
-The hostname is `surface`, matching the flake output, so subsequent local
-changes can be applied with plain `sudo nixos-rebuild switch`. This deliberately
-trusts the selected user's editable configuration for root rebuilds.
+As the configured user, apply subsequent local changes with:
+
+```bash
+sudo nixos-rebuild switch --flake "path:$HOME/.config/nixos#surface"
+```
+
+Use the matching flake output for other hosts. This deliberately trusts the
+selected user's editable configuration for root rebuilds.
 See [.config/nixos/docs/DOTFILES.md](.config/nixos/docs/DOTFILES.md) for Git
 operations. Set the user's password locally with `passwd`, connect Wi-Fi with
 NetworkManager, and run `sudo tailscale up` to authenticate Tailscale.
 
 ## Updates
 
-Update the lock with `nix flake update --flake path:$HOME/.config/nixos`,
+Update the lock with `nix flake update --flake "path:$HOME/.config/nixos"`,
 review and commit `.config/nixos/flake.lock`, and push. Rebuild locally with
-`sudo nixos-rebuild switch`, or from the desired GitHub revision as above.
+`sudo nixos-rebuild switch --flake "path:$HOME/.config/nixos#surface"`,
+or from the desired GitHub revision as above.
 Unstable updates can change the shell, greeter, Niri, and other system packages.
 Keep the lock file so inputs remain reproducible.
 
