@@ -1,0 +1,11 @@
+[
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-q": ["terminal::SendKeystroke", "ctrl-q"],
+      "ctrl-s": ["terminal::SendKeystroke", "ctrl-s"],
+      "ctrl-c": ["terminal::SendKeystroke", "ctrl-c"],
+      "ctrl-v": ["terminal::SendKeystroke", "ctrl-v"]
+    }
+  }
+]

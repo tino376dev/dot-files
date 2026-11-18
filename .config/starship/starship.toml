@@ -1,0 +1,47 @@
+add_newline = false
+
+format = "$kubernetes$container$username@$hostname$directory$git_branch$git_state$git_status$character"
+right_format = "$shell"
+
+[container]
+symbol = ""
+format = "[$symbol]($style) "
+
+[directory]
+format = "[ $path]($style)[$read_only]($read_only_style) "
+truncation_length = 3
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+symbol = ""
+format = '([$branch(:$remote_branch)]($style))'
+
+[git_status]
+format = '([ $all_status$ahead_behind]($style))'
+
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol$hostname]($style)"
+trim_at = ".companyname.com"
+disabled = false
+
+[kubernetes]
+symbol = "󱃾  "
+format = '[$symbol$context( \($namespace\))]($style)'
+disabled = false
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+
+[shell]
+bash_indicator = "bash"
+fish_indicator = "fish"
+nu_indicator = "nu"
+format = "[$indicator]($style)"
+disabled = false
+
+[username]
+format = "[$user]($style)"
+disabled = false
+show_always = true

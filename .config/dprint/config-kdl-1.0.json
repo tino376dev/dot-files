@@ -1,0 +1,6 @@
+{
+  "kdl": {},
+  "plugins": [
+    "https://plugins.dprint.dev/kachick/kdl-0.2.1.wasm"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "cli_default_open_behavior": "existing_window",
+  "outline_panel": { "dock": "left" },
+  "collaboration_panel": { "dock": "left" },
+  "git_panel": { "dock": "left" },
+  "agent": {
+    "dock": "right",
+    "default_profile": "write",
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "copilot_chat",
+      "model": "claude-opus-4.5"
+    }
+  },
+  "autosave": "on_window_change",
+  "buffer_font_family": "Noto Sans Mono",
+  "buffer_font_size": 16,
+  "extend_comment_on_newline": false,
+  "format_on_save": "on",
+  "languages": {
+    "Markdown": {
+      "language_servers": ["marksman"],
+      "format_on_save": "off"
+    },
+    "Python": {
+      "format_on_save": "on",
+      "formatter": [
+        { "code_action": "source.fixAll.ruff" },
+        { "code_action": "source.organizeImports.ruff" },
+        { "language_server": { "name": "ruff" } }
+      ],
+      "language_servers": ["ruff"]
+    },
+    "Nu": {
+      "formatter": {
+        "external": {
+          "command": "topiary",
+          "arguments": ["format", "--language", "nu"]
+        }
+      },
+      "format_on_save": "on"
+    }
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": { "lineLength": 80, "lint": { "extendSelect": ["I"] } }
+      }
+    }
+  },
+  "project_panel": {
+    "dock": "left",
+    "auto_fold_dirs": true,
+    "auto_reveal_entries": true,
+    "button": true,
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "scrollbar": { "show": "always" }
+  },
+  "tabs": { "close_position": "right", "file_icons": true, "git_status": true },
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "terminal": {
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "button": true,
+    "copy_on_select": true,
+    "detect_venv": { "on": { "activate_script": "fish", "directories": [".venv"] } },
+    "option_as_meta": false,
+    "working_directory": "current_project_directory"
+  },
+  "ui_font_size": 16
+}

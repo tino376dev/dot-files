@@ -1,0 +1,29 @@
+[[language]]
+name = "nu"
+auto-format = true
+formatter = { command = "topiary", args = ["format", "--language", "nu"] }
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "sh", args = ["-c", 'exec dprint fmt --config "${XDG_CONFIG_HOME:-$HOME/.config}/dprint/config.json" --stdin md'] }
+
+[[language]]
+name = "json"
+auto-format = true
+formatter = { command = "sh", args = ["-c", 'exec dprint fmt --config "${XDG_CONFIG_HOME:-$HOME/.config}/dprint/config.json" --stdin json'] }
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "sh", args = ["-c", 'exec dprint fmt --config "${XDG_CONFIG_HOME:-$HOME/.config}/dprint/config.json" --stdin toml'] }
+
+[[language]]
+name = "yaml"
+auto-format = true
+formatter = { command = "sh", args = ["-c", 'exec dprint fmt --config "${XDG_CONFIG_HOME:-$HOME/.config}/dprint/config.json" --stdin yaml'] }
+
+[[language]]
+name = "kdl"
+auto-format = true
+formatter = { command = "sh", args = ["-c", 'exec dprint fmt --config "${XDG_CONFIG_HOME:-$HOME/.config}/dprint/config-kdl-1.0.json" --stdin kdl'] }

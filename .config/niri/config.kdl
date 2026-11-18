@@ -1,0 +1,79 @@
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/screenshots/%Y-%m-%d-%H-%M-%S.png"
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+input {
+    focus-follows-mouse max-scroll-amount="0%"
+    mouse {
+        middle-emulation
+    }
+    keyboard {
+        xkb {
+            options "caps:escape"
+        }
+        numlock
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+layout {
+    always-center-single-column
+    default-column-width {
+        proportion 1.0
+    }
+    background-color "transparent"
+    struts {
+        left 16
+        right 16
+    }
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+window-rule {
+    match title="^Picture-in-Picture$"
+    default-floating-position x=32 y=32 relative-to="bottom-right"
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+    open-floating true
+}
+
+window-rule {
+    match title="^Signal$"
+    block-out-from "screencast"
+}
+
+include optional=true "dms/colors.kdl"
+include optional=true "dms/layout.kdl"
+include optional=true "dms/alttab.kdl"
+include optional=true "dms/cursor.kdl"
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/wpblur.kdl"
+include optional=true "dms/windowrules.kdl"
+include optional=true "dms/binds-next.kdl"
+include optional=true "dms/binds.kdl"

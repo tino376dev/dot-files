@@ -1,0 +1,71 @@
+binds {
+    Mod+Escape hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+Alt+Shift+Down { move-window-to-workspace-down; }
+    Mod+Alt+Shift+J { move-window-to-workspace-down; }
+    Mod+Alt+Shift+K { move-window-to-workspace-up; }
+    Mod+Alt+Shift+Up { move-window-to-workspace-up; }
+    Mod+Ctrl+I { move-column-to-workspace-up; }
+    Mod+Ctrl+U { move-column-to-workspace-down; }
+    Mod+Down { focus-workspace-down; }
+    Mod+I { focus-workspace-up; }
+    Mod+J { focus-workspace-down; }
+    Mod+K { focus-workspace-up; }
+    Mod+Shift+Down repeat=false { move-column-to-workspace-down; }
+    Mod+Shift+I { move-workspace-up; }
+    Mod+Shift+U { move-workspace-down; }
+    Mod+Shift+Up repeat=false { move-column-to-workspace-up; }
+    Mod+U { focus-workspace-down; }
+    Mod+Up { focus-workspace-up; }
+    Mod+0 repeat=false hotkey-overlay-title="Fullscreen" { fullscreen-window; }
+    Mod+1 repeat=false { set-column-width "100%"; }
+    Mod+2 repeat=false { set-column-width "50%"; }
+    Mod+3 repeat=false { set-column-width "33%"; }
+    Mod+4 repeat=false { set-column-width "25%"; }
+    Mod+5 repeat=false { set-column-width "20%"; }
+    Mod+Alt+H { focus-window-up-or-column-left; }
+    Mod+Alt+L { focus-window-down-or-column-right; }
+    Mod+Alt+Left { focus-window-up-or-column-left; }
+    Mod+Alt+Right { focus-window-down-or-column-right; }
+    Mod+Alt+Shift+H { consume-or-expel-window-left; }
+    Mod+Alt+Shift+L { consume-or-expel-window-right; }
+    Mod+Alt+Shift+Left { consume-or-expel-window-left; }
+    Mod+Alt+Shift+Right { consume-or-expel-window-right; }
+    Mod+BracketLeft { set-column-width "-10%"; }
+    Mod+BracketRight { set-column-width "+10%"; }
+    Mod+C { center-visible-columns; }
+    Mod+Ctrl+Down { focus-monitor-down; }
+    Mod+Ctrl+H { focus-monitor-left; }
+    Mod+Ctrl+J { focus-monitor-down; }
+    Mod+Ctrl+K { focus-monitor-up; }
+    Mod+Ctrl+L { focus-monitor-right; }
+    Mod+Ctrl+Left { focus-monitor-left; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+Up { focus-monitor-up; }
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+Left { focus-column-left; }
+    Mod+Q { close-window; }
+    Mod+Right { focus-column-right; }
+    Mod+Shift+C { center-column; }
+    Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Up { move-column-to-monitor-up; }
+    Mod+Shift+H repeat=false { move-column-left; }
+    Mod+Shift+L repeat=false { move-column-right; }
+    Mod+Shift+Left repeat=false { move-column-left; }
+    Mod+Shift+Right repeat=false { move-column-right; }
+    Mod+Z { focus-window-previous; }
+    Mod+P { screenshot; }
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "alacritty"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
+}
