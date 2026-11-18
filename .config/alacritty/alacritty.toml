@@ -3,7 +3,7 @@ import = ["~/.config/alacritty/dank-theme.toml"]
 live_config_reload = true
 
 [terminal.shell]
-program = "nu"
+program = "bash"
 
 [window.padding]
 x = 10

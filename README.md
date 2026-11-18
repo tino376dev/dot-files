@@ -6,6 +6,11 @@ is under `.config/`, shared NixOS modules and host definitions are under
 `.config/nixos/`, and wallpapers are under `.local/share/wallpapers/`.
 No Home Manager module is used.
 
+Alacritty starts Bash with [Flyline](https://github.com/HalFrgrd/Flyline)
+enabled through its upstream NixOS module. Nushell remains installed and can
+be started with `nu`. In Bash, `dot` runs Git against the bare dotfiles
+repository with the user's home as its work tree.
+
 The flake at `.config/nixos/flake.nix` exports `nixosConfigurations.surface` and a reusable NixOS
 desktop module, based on `nixos-unstable`. For each additional machine, create
 `.config/nixos/hosts/<name>/configuration.nix` and its own generated

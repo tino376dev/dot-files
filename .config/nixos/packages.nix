@@ -1,6 +1,7 @@
 { finpilotZen, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
+  programs.flyline.enable = true;
 
   environment.systemPackages = with pkgs; [
     alacritty

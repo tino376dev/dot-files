@@ -3,15 +3,19 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flyline = {
+      url = "github:HalFrgrd/Flyline";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, zen-browser, ... }: {
+  outputs = { self, nixpkgs, flyline, zen-browser, ... }: {
     nixosModules.default = { pkgs, ... }: {
-      imports = [ ./default.nix ];
+      imports = [ ./default.nix flyline.nixosModules.default ];
       _module.args.finpilotZen = zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
 
