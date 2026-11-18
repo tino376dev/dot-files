@@ -7,7 +7,8 @@ is under `.config/`, shared NixOS modules and host definitions are under
 No Home Manager module is used.
 
 Alacritty starts Bash with [Flyline](https://github.com/HalFrgrd/Flyline)
-enabled through its upstream NixOS module. Nushell remains installed and can
+enabled through its upstream NixOS module and Starship using
+`.config/starship/starship.toml`. Nushell remains installed and can
 be started with `nu`. In Bash, `dot` runs Git against the bare dotfiles
 repository with the user's home as its work tree.
 

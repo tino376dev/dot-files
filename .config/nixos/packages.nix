@@ -2,6 +2,14 @@
 {
   nixpkgs.config.allowUnfree = true;
   programs.flyline.enable = true;
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+    enableXonshIntegration = false;
+    enableNushellIntegration = false;
+  };
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -45,7 +53,6 @@
     ruff
     shellcheck
     signal-desktop
-    starship
     tinymist
     topiary
     typst
