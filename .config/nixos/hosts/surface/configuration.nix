@@ -2,6 +2,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   dotfiles.user = "tino";
+  dotfiles.pushRepository = "git@github.com:tino376dev/dot-files.git";
   networking.hostName = "surface";
 
   boot.loader.systemd-boot.enable = true;

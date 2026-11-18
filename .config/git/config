@@ -1,0 +1,24 @@
+[core]
+    pager = delta
+	editor = micro
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[alias]
+	root = rev-parse --show-toplevel
+
+[delta]
+    syntax-theme = ansi
+    navigate = true    # use n and N to move between diff sections
+	line-numbers = true
+	side-by-side = false
+
+[init]
+	defaultBranch = main

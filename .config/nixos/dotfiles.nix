@@ -20,6 +20,11 @@ in
       default = "https://github.com/tino376dev/dot-files";
       description = "Git repository to clone on the first bootstrap.";
     };
+    pushRepository = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "Origin push URL to set on each bootstrap, or null to leave it unchanged.";
+    };
   };
 
   config = lib.mkIf (cfg.user != null) {
@@ -33,7 +38,7 @@ in
         Type = "oneshot";
         User = cfg.user;
         RemainAfterExit = true;
-        ExecStart = "${lib.getExe bootstrap} ${lib.escapeShellArgs [ cfg.repository home ]}";
+        ExecStart = "${lib.getExe bootstrap} ${lib.escapeShellArgs [ cfg.repository home (if cfg.pushRepository == null then "" else cfg.pushRepository) ]}";
       };
     };
   };

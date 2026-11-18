@@ -49,8 +49,13 @@ The Surface sets `dotfiles.user = "tino"`. At boot (or during the first switch),
 `~/.local/share/dotfiles.git` and checks it out into the user's home. On the
 initial checkout, it can replace existing files at paths tracked by the
 repository, so back up anything you want to keep. It runs as that user and
-leaves an already-existing bare repository alone. It never pulls updates
-automatically. Network access
+leaves an already-existing bare repository's checkout and local edits alone.
+Each run applies `dotfiles.pushRepository` as the origin push URL when set.
+The Surface uses `git@github.com:tino376dev/dot-files.git` for pushes while
+keeping the public HTTPS fetch URL. Pushing requires an SSH key authorized
+for repository write access; bootstrap does not create or install keys.
+Leave `dotfiles.pushRepository = null` to preserve an existing push URL.
+It never pulls updates automatically. Network access
 to the published repo is required; private repos require Git credentials for
 that user. An unavailable repo causes a visible service failure.
 
